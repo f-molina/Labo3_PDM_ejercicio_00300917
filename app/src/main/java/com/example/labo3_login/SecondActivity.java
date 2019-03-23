@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.labo3_login.utils.AppConstant;
+
 public class SecondActivity extends AppCompatActivity {
 
-    private TextView user, password, email, otro;
+    private TextView mUser, mPassword, mEmail, mOtro;
     private Button mShare;
 
     @Override
@@ -16,27 +18,28 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        user = findViewById(R.id.second_user);
-        password = findViewById(R.id.second_pass);
-        email = findViewById(R.id.second_email);
-        otro = findViewById(R.id.second_otro);
+        mUser = findViewById(R.id.second_user);
+        mPassword = findViewById(R.id.second_pass);
+        mEmail = findViewById(R.id.second_email);
+        mOtro = findViewById(R.id.second_otro);
         mShare = findViewById(R.id.share);
-        Intent mIntent =getIntent();
+        Intent mIntent = getIntent();
         if (mIntent != null) {
-            user.setText(mIntent.getStringExtra(Intent.EXTRA_TEXT));
-            password.setText(mIntent.getStringExtra(Intent.EXTRA_TEXT));
-            email.setText(mIntent.getStringExtra(Intent.EXTRA_TEXT));
-            otro.setText(mIntent.getStringExtra(Intent.EXTRA_TEXT));
+            mUser.setText(mIntent.getStringExtra(AppConstant.TEXT_USER));
+            mPassword.setText(mIntent.getStringExtra(AppConstant.TEXT_PASS));
+            mEmail.setText(mIntent.getStringExtra(AppConstant.TEXT_EMAIL));
+            mOtro.setText(mIntent.getStringExtra(AppConstant.TEXT_OTRO));
         }
 
         mShare.setOnClickListener(v->{
-            String text = user.getText().toString();
-            String text1 = password.getText().toString();
-            String text2 = email.getText().toString();
-            String text3 = otro.getText().toString();
+            String text = mUser.getText().toString();
+            String text1 = mPassword.getText().toString();
+            String text2 = mEmail.getText().toString();
+            String text3 = mOtro.getText().toString();
             Intent shareIntent = new Intent();
             shareIntent.setType("text/plain");
             shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Username: " + text + "\nPassword: " + text1 + "\nEmail: " + text2 + "\nOtro: " + text3);
             startActivity(shareIntent);
         });
     }

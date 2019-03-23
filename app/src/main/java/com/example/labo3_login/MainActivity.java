@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.labo3_login.utils.AppConstant;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText user, pass, email, otro;
@@ -28,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
             String text2 = email.getText().toString();
             String text3 = otro.getText().toString();
             Intent mIntent = new Intent(MainActivity.this, SecondActivity.class);
-            mIntent.putExtra(Intent.EXTRA_TEXT, text);
-            mIntent.putExtra(Intent.EXTRA_TEXT, text1);
-            mIntent.putExtra(Intent.EXTRA_TEXT, text2);
-            mIntent.putExtra(Intent.EXTRA_TEXT, text3);
+            mIntent.putExtra(AppConstant.TEXT_USER, text);
+            mIntent.putExtra(AppConstant.TEXT_PASS, text1);
+            mIntent.putExtra(AppConstant.TEXT_EMAIL, text2);
+            mIntent.putExtra(AppConstant.TEXT_OTRO, text3);
             startActivity(mIntent);
         });
     }
