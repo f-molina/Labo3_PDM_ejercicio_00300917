@@ -39,7 +39,10 @@ public class SecondActivity extends AppCompatActivity {
             Intent shareIntent = new Intent();
             shareIntent.setType("text/plain");
             shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Username: " + text + "\nPassword: " + text1 + "\nEmail: " + text2 + "\nOtro: " + text3);
+            shareIntent.putExtra(AppConstant.TEXT_USER, text);
+            shareIntent.putExtra(AppConstant.TEXT_PASS, text1);
+            shareIntent.putExtra(AppConstant.TEXT_EMAIL, text2);
+            shareIntent.putExtra(AppConstant.TEXT_OTRO, text3);
             startActivity(shareIntent);
         });
     }
